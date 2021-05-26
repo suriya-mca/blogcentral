@@ -1,0 +1,94 @@
+<!--This base is for index, create, post_detail, sidebar page-->
+<!--load static files-->
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Blog Central</title>
+        <link rel="shortcut icon" type="image" href="{% static 'img/copywriting.png' %}"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!--base style-->
+        <link rel="stylesheet" href="{% static 'css/style-base.css' %}"/>
+        <!--index style-->
+        <link rel="stylesheet" href="{% static 'css/style-index.css' %}"/>
+    </head>
+
+    <body>
+        
+    <!--preloder-->
+    <div class="preloder">
+        <div class="preloder-start"></div>
+    </div>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow" id="mainNav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}" style="color: rgb(17, 180, 131);">Blog central</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#"></a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'dashboard' %}">Dashboard</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#"></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-black font-weight-bold" id="navbarDropdown" role="button" data-toggle="dropdown" href="#">Hello, {{user.username}}</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        </li>
+                        {% else %}
+                        <form class="form-inline" method="GET" action="{% url 'searchbar' %}">
+                            {% csrf_token %}
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="s">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#"></a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+        <!-- Footer -->
+        <footer class="py-3 bg-grey">
+            <p class="m-0 text-dark text-center ">Copyright &copy; Blog Central</p>
+        </footer>
+
+        <!--jquery for preloder-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+        setTimeout(function(){
+            $(".preloder").fadeToggle();
+        },1500);
+        </script>
+
+    </body>
+
+</html>

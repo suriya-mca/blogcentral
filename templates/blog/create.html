@@ -1,0 +1,38 @@
+<!--django crispy form-->
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<!--head-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create blog</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color: rgb(17, 180, 131);
+        }
+    </style>
+</head>
+<!--body-->
+<body>
+
+    <div class="container p-3 my-3" style="border-radius: 20px;background-color:rgb(58, 57, 57)">
+        <div class="">
+            <div class="container">
+                <div class="container">
+                    <center><h2 style="color: white;font-weight: 400;">Create Your Blog</h2></center>
+                    <form method="POST" action='' style="color: white;">
+                        {% csrf_token %}
+                        {{form.as_p|safe}}<br>
+                        <center><button class="btn btn-success" type="submit">Create</button></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

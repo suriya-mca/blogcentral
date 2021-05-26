@@ -1,0 +1,85 @@
+<!--extends base template structure-->
+{% extends 'forms/base.html' %}
+<!--loading the static files-->
+{% load static %}
+<!--title-->
+{% block title %}Register{% endblock %}
+  <!--body-->
+  {% block content %}
+  
+      <div class="content">
+  
+        <div class="text">Create Account</div>
+        <form method="POST" action='' id="form">
+          {% csrf_token %}
+          <div class="field">
+            <span class="fas fa-user"></span>
+            <input type="text" required placeholder="User Name" name='username' id="user">
+            <label></label>
+          </div>
+          <br>
+          <div class="field">
+              <span class="fas fa-envelope"></span>
+              <input type="email" required placeholder="Email" name='email' id="email">
+              <label></label>
+          </div>
+          <br>
+          <div class="field">
+            <span class="fas fa-lock"></span>
+            <input type="password" required placeholder="Password" name='password' id="password">
+            <label></label>
+          </div>
+          <br>
+          <div class="field">
+              <span class="fas fa-lock"></span>
+              <input type="password" required placeholder="Confirm Password" name="confirm_password" id="conpassword">
+              <label></label>
+          </div>
+          <br>
+          <button type="submit" onclick="return newUser()">Register</button>
+
+          <div>
+            {% for message in messages %}
+                <h5 style="color: red;">{{message}}</h5>
+            {% endfor %}
+          </div>
+          
+        </form>
+      </div>
+
+      <script>
+      function newUser(){
+       
+        let user = document.getElementById('user').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let conpassword = document.getElementById('conpassword').value;
+
+        if(user.trim()=="")
+        {
+          alert('Enter your user name');
+          return false;
+        }
+        else if(email.trim()=="")
+        {
+          alert('Enter your mailid');
+          return false;
+        }
+        else if(password.trim()=="")
+        {
+          alert('Enter password');
+          return false;
+        }
+        else if(conpassword.trim()=="")
+        {
+          alert('Confirm your password please');
+          return false;
+        }
+        else{
+          return true;
+        }
+      }
+
+    </script>
+
+  {% endblock %}

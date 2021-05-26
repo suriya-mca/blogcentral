@@ -1,0 +1,83 @@
+<!--extends base template structure-->
+{% extends "blog/base.html" %} 
+<!--load static files-->
+{% load static %}
+<!--body-->
+{% block content %}
+<style>
+    .flex-column{
+        max-width: 460px;
+    }
+</style>
+
+<header class="masthead">
+    <div class="success-msg">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="overlay" ></div>
+    <div class="container text">
+        <div class="d-flex">
+            <div class="col-md-8 col-md-10 mx-auto d-flex flex-row">
+                <div class="d-flex flex-column">
+                    <div class="site-heading">
+                        <h3 class="site-heading my-4 mt-5 text-white"> Welcome to my awesome Blog </h3>
+                        <p class="text-light">We Love Blog As much as you do..! &nbsp</p>
+                    </div>
+                </div>  
+                <div class="d-flex flex-column justify-content-center align-items-end">
+                    <img src="{% static 'img/content1.svg' %}" style="width: 90%;height:80%">
+                </div>         
+            </div> 
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on|date:'d-m-Y'}} </p>
+                    <p class="card-text">{{post.content|slice:":200"|safe}}</p>
+                    <a href="{% url 'post_detail' post.id  %}" class="btn btn-light" style="color: rgb(17, 180, 131);">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!--including sidebar page here-->
+        {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
+    </div>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation conatiner"></nav>
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link text-dark">&laquo; PREV </a></li>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}" class="page-link text-dark"> NEXT &raquo;</a></li>
+      {% endif %}
+    </ul>
+    </nav>
+    {% endif %}
+
+</div>
+
+ <!--jquery for msg-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script>
+ setTimeout(function(){
+     $(".success-msg").fadeToggle();
+ },3500);
+ </script>
+
+{%endblock%}

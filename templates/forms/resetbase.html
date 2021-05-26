@@ -1,0 +1,27 @@
+<!--This is base for resetPassword, resetDone, changePassword & completedPassword page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <style>
+        body{
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>

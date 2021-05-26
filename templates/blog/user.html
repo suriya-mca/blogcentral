@@ -1,0 +1,35 @@
+<!--extends base template structure-->
+{% extends "blog/base.html" %} 
+<!--load static files-->
+{% load static %}
+<!--body-->
+
+{% block content %}
+<br>
+<br>
+<div class="container">
+  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Date & Time</th>
+        <th scope="col">Title</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in userlist %}
+      <tr>
+        <td>{{i.updated_on}}</td>
+        <td>{{i.title}}</td>
+        <td><a class="btn btn-primary" href="{% url 'update' i.id  %}" role="button">Edit</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <center><a class="btn btn-success" href="{% url 'create' %}" role="button">Create New</a></center>
+
+</div>
+
+{% endblock %}

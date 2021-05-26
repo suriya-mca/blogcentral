@@ -1,0 +1,56 @@
+{% load static %}
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+       
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+<div class="card my-4">
+        <h5 class="card-header shadow" style="color:black;font-weight:bold">About Us</h5>
+    <div class="card-body">
+        <p class="card-text"> This awesome blog is made on the top of our Favourite full stack Framework 'Django', follow up the tutorial to learn how to use it..!</p>
+        <a href=" https://suriya27-g.github.io/about-blogcentral/"
+           class="btn btn-light" style="color: rgb(17, 180, 131);" target="blank">Know more!</a>
+    </div>
+</div>
+<br>
+<div class="topblog">
+    <h3 class="" style="color: rgb(17, 180, 131);">Top Blogs</h3>
+    <div class="card my-4 p-2">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'img/ml1.png' %}" style="width: 90%;height: 90%;">
+            </div>
+            <div class="col">
+                <a><h5 class="justify-content-center">machine learning</h5></a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'img/ai1.png' %}" style="width: 90%;height: 90%;">
+            </div>
+            <div class="col">
+                <a><h5 class="justify-content-center">artificial intelligence</h5></a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'img/db1.png' %}" style="width: 90%;height: 90%;">
+            </div>
+            <div class="col">
+                <a><h5 class="justify-content-center">rdbms</h5></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock sidebar %}

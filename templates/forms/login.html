@@ -1,0 +1,62 @@
+<!--extends base template structure-->
+{% extends 'forms/base.html' %}
+<!--loading the static files-->
+{% load static %}
+<!--title-->
+{% block title %}Signin{% endblock %}
+  <!--body-->
+  {% block content %}
+
+      <div class="content">
+  
+        <div class="text">Sign in</div>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="field">
+            <span class="fas fa-user"></span>
+            <input type="text" required placeholder="User Name" name="username" id="user">
+            <label></label>
+          </div>
+          <br>
+          <div class="field">
+            <span class="fas fa-lock"></span>
+            <input type="password" required placeholder="Password" name="password" id="password">
+            <label></label>
+          </div>
+          <div class="forgot-pass"><a href="{% url 'password_reset' %}">Forgot Password?</a></div>
+
+          <div id="message">
+            {% for message in messages %}
+                <h4 style="color: red;">{{message}}</h4>
+            {% endfor %}
+          </div>
+
+          <button onclick="return exUser()" type="submit">Sign in</button>
+          <div class="signup">Not a member?
+            <a href="{% url 'regform' %}">signup now</a>
+          </div>
+
+        </form>
+      </div>
+
+      <script>
+        function exUser(){
+          let user = document.getElementById('user').value;
+          let password = document.getElementById('password').value;
+
+          if(user.trim()=="")
+          {
+            alert('Enter user name');
+            return false;
+          }
+          else if(password.trim()=="")
+          {
+            alert('Enter your password');
+            return false;
+          }
+          else{
+            return true;
+          }
+        }
+      </script>
+  {% endblock %}
