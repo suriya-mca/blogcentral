@@ -10,7 +10,7 @@
 #### Tools & Technologies
 - Backend - Django Framework
 - Frontend - HTML, CSS(Bootstrap 4), Js
-- Database - MySQL
+- Database - PostgreSQL
 
 <br/>
 🔗 WebApp Link - https://blogcentral.pythonanywhere.com
