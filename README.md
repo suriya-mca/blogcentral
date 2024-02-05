@@ -5,10 +5,10 @@
 > Blogcentral is a CMS application to manage users only where people can share ideas and discuss any topic. A place to share your thoughts and opinions on the topic at hand.
 
 #### Architecture
-Monolithic Architecture
+- Monolithic Architecture
 
 #### Design Pattern
-MVT(Model View Template)
+- MVT(Model View Template)
 
 #### Tools & Technologies
 - Backend - Django Framework
