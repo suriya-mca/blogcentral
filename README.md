@@ -2,15 +2,39 @@
 
 #### Description
 
-> Blogging application to manage users only where people can share their ideas and discuss any topics. A place to share your thoughts and your passion. It gives everyone his or her personal views to publish to the world.
+> Blogcentral is a CMS application to manage users only where people can share ideas and discuss any topic. A place to share your thoughts and opinions on the topic at hand.
 
 #### Architecture
-> MVC
+Monolithic Architecture
+
+#### Design Pattern
+MVT(Model View Template)
 
 #### Tools & Technologies
 - Backend - Django Framework
-- Frontend - HTML, CSS(Bootstrap 4), Js
+- Frontend - HTML, CSS, JavaScript
 - Database - PostgreSQL
+- Versioning - Git, Github
+- Hosting - Pythonanywhere[http://www.pythonanywhere.com]
 
-<br/>
-🔗 WebApp Link - https://blogcentral.pythonanywhere.com
+### Quick Start
+
+1. Migrate Command
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+2. Collect Static Files
+```
+python manage.py collectstatic
+```
+
+3. Run Server
+```
+python manage.py runserver
+```
+#### (Note - If you are using django-admin you need to create a super user)
+```
+python manage.py createsuperuser
+```
